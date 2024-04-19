@@ -13,3 +13,8 @@ after_success:
   - docker build -t fibon4code/multi-nginx ./nginx
   - docker build -t fibon4code/multi-server ./server
   - docker build -t fibon4code/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push fibon4code/multi-client
+  - docker push fibon4code/multi-nginx
+  - docker push fibon4code/multi-server
+  - docker push fibon4code/multi-worker
